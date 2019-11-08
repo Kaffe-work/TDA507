@@ -175,6 +175,12 @@ public class GlobalAlignment {
 	}
 	System.out.println();
 	for ( i=alignmentLength-1 ; i>=0 ; i-- ) {
+		if (alignX[i] == alignY[i]) // if the values are the same, print, else do nothing
+			System.out.print("|");
+		else System.out.print(" "); // if no line, space 
+	}
+	System.out.println();
+	for ( i=alignmentLength-1 ; i>=0 ; i-- ) {
 		System.out.print(alignY[i]);
 	}
 	System.out.println();
