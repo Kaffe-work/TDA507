@@ -9,7 +9,7 @@
 //
 
 
-public class GlobalAlignment {
+public class LocalAlignment {
 
 	public static final int MAX_LENGTH	= 100;
 
@@ -27,8 +27,8 @@ public class GlobalAlignment {
 	int i, j;
 	int alignmentLength, score, tmp;
 
-	String X = "ATCGAT";
-	String Y = "ATACGT";
+	String X = "PAWHEAE";
+	String Y = "HDAGAWGHEQ";
 
 	int F[][] = new int[MAX_LENGTH+1][MAX_LENGTH+1];     /* score matrix */
 	int trace[][] = new int[MAX_LENGTH+1][MAX_LENGTH+1]; /* trace matrix */	
@@ -43,14 +43,17 @@ public class GlobalAlignment {
 	// Initialise matrices
 	//
 
+
+
+    //removes first row and column
 	F[0][0] = 0;
 	trace[0][0] = STOP;
 	for ( i=1 ; i<=m ; i++ ) {
-		F[i][0] = F[i-1][0] + GAP_PENALTY;
+	//	F[i][0] = F[i-1][0] + GAP_PENALTY;  
 		trace[i][0] = STOP;
 	}
 	for ( j=1 ; j<=n ; j++ ) {
-		F[0][j] = F[0][j-1] + GAP_PENALTY;
+	//	F[0][j] = F[0][j-1] + GAP_PENALTY;
 		trace[0][j] = STOP;
 	}
 
@@ -82,7 +85,9 @@ public class GlobalAlignment {
 				trace[i][j] = LEFT;
 			}
 
-			F[i][j] = score;
+
+            //maximum of zero and score
+			F[i][j] = Math.max(score, 0);
 		}
 	}
 
