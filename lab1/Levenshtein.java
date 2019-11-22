@@ -27,7 +27,7 @@ public class Levenshtein {
 	int i, j;
 	int alignmentLength, score, tmp;
 
-	String X = "ATCGAT";
+    String X = "ATCGAT";
 	String Y = "ATACGT";
 
 	int F[][] = new int[MAX_LENGTH+1][MAX_LENGTH+1];     /* score matrix */
@@ -71,17 +71,17 @@ public class Levenshtein {
                     score = Math.max(m, n);
                 }
                 else{
-                        //calculate Levenshtein value 1
+                        //calculate Levenshtein value 
                 if ( X.charAt(i-1)==Y.charAt(j-1) ) {
                     score = F[i-1][j-1] + MATCH_SCORE;
                 } else {
                     score = F[i-1][j-1] + MISMATCH_SCORE;
                 }
-                //find the minimum of the 3 Levenshtein values.
                 lev1 = score;
                 lev2 = F[i-1][j] + GAP_PENALTY;
                 lev3 = F[i][j-1] + GAP_PENALTY;
 
+                //find the minimum of the 3 Levenshtein values.
                 score = Math.min(Math.min(lev1, lev2),lev3);
             }
             F[i][j] = score;

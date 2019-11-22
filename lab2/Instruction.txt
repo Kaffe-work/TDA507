@@ -1,0 +1,11 @@
+create files 1CDH.domak and 1CDH.pairs
+(touch works)
+Compile DOMAK.java and MakeMap.java
+Run DOMAK/MakeMap
+wish dotplot.ctl 1CDH.pairs for task 1. The image is small, but usable. alternativly, use the same method as for task 2:
+use Xclip -sel c < 1CDH.domak to get the contents from 1CDH.domak and paste this into 
+https://www.meta-chart.com/scatter#/display
+
+This site will generate a nice-looking dotplot for task 2.
+
+

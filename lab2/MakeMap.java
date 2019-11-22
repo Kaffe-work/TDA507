@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
  
 public class MakeMap {
+
+    //Name Leo Carlsson
  
     List<String> pdbfile;
 
@@ -30,12 +32,6 @@ public class MakeMap {
         return content;
     }
  
-    /**
-     * Filters away all non CA-atom strings from the pdbfile non-destructively
-     *
-     * @param pdbFile the pdbfile to be filtered
-     * @return a list of strings containing the atom information for CA-atoms
-     */
     private List<String> filterPDB(List<String> pdbFile) {
         List<String> filteredPDB = new ArrayList<>();
         for (String str : pdbFile) {
@@ -47,12 +43,7 @@ public class MakeMap {
         return filteredPDB;
     }
  
-    /**
-     * Gets the xyz atom coordinates for all the atoms in the input
-     *
-     * @param filteredPDB the list of strings from @filterPDB()
-     * @return a list of coordinates in strings
-     */
+  
     private List<String> getAtomCoordinates(List<String> filteredPDB) {
         List<String> atomCoordinates = new ArrayList<>();
         for (String str : filteredPDB) {
@@ -64,13 +55,7 @@ public class MakeMap {
         return atomCoordinates;
     }
  
-    /**
-     * Checks if atom2 is within the threshold distance (7 Å) of atom1
-     *
-     * @param atom1 an array containing xyz coordinates of an atom
-     * @param atom2 the atom coordinates to check distance with
-     * @return true if within threshold distance, else returns false
-     */
+
     private boolean withinThreshold(int[] atom1, int[] atom2) {
         int atom1x = atom1[0];
         int atom1y = atom1[1];
@@ -84,13 +69,7 @@ public class MakeMap {
                           Math.pow(atom2z - atom1z, 2));
         return (distance <= 7);
     }
- 
-    /**
-     * Reads the coordinates of all CA-atoms and pairs those that are within threshold distance.
-     * This is done by using helper methods.
-     *
-     * @return a formatted string that contains all CA-pairs within threshold distance
-     */
+
     public String getCAPairs() {
         List<String> atomCoord = getAtomCoordinates(filterPDB(this.pdbfile));
         String pairs = "";
