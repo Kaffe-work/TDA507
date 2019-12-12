@@ -1,0 +1,28 @@
+the program will not be able to solve chains where there are more than one nodes within the range, as it doesn't take this into account.
+it doesn't take non-terminal nodes in account either.
+
+the program  will fist find the edge of the chain, and then try to find the next node in the list. once that is done, it will remove the found node from the searchspace. once the searhcspace is empty, it will print the output.
+
+
+The output of the program is:
+
+a file prompt. input the filename for the data file without extension.
+
+2
+1
+10
+5
+7
+6
+4
+3
+9
+8
+the length of the sequence is:
+10
+
+running the program is done in python, so you only have to type python task1.py
+
+it assumes you python installed. 
+
+

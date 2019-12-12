@@ -48,14 +48,14 @@ def find_edge(fixed, rest):
         return fixed + rest
     else:
         head = fixed[-1]
-        neighbours = find_first_atom(fixed, rest)
+        [neighbours] = find_first_atom(head, rest)
         fixed.append(neighbours)
         rest = remove_atom(neighbours, rest)
-        find_edge(fixed, rest)
-  
+        return find_edge(fixed, rest)
+    
 
 def remove_atom(atom_remove, atoms):
-    return filter(lambda a : a['index'] != edge['index'], atoms)
+    return list(filter(lambda a : a['index'] != atom_remove['index'], atoms))
 
             
 def main():
@@ -63,9 +63,11 @@ def main():
     file_name = os.path.join(DIR_PATH, "{}.txt".format(file_name))
     atoms = read_data(file_name)
     edge = find_end(atoms)
-    for a in atoms:
-        print(find_end(atoms))
     sequence = find_edge([edge], remove_atom(edge, atoms))
+    for a in sequence:
+        print(a['index'])
+    print("the length of the sequence is:")
+    print(len(sequence))
 
 if __name__ == '__main__':
     main()
